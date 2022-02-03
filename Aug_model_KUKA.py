@@ -7,7 +7,7 @@ import numpy as np
 from numpy import genfromtxt
 import numpy.random as npr
 import time
-import Aug_MLP_RPY_model_Release as MLP
+import Aug_MLP_RPY_model as MLP
 from math import sqrt
 
 import os
@@ -84,11 +84,18 @@ if __name__ == "__main__":
 
     #----Load Training Data
     folderData = "Data/"
+    
     q_file = folderData+"q_KUKA_N_30.txt" #joint positions file
     dq_file = folderData+"dq_KUKA_N_30.txt" #joint velocities file
 
     Pos_file = folderData+"P_eul_sincos_KUKA_N_30.txt" #Tip position and tirgonometric representation for RPY
     dPos_file = folderData+"dP_deul_sincos_KUKA_N_30.txt" #Rate of change of tip position and tirgonometric representation for RPY
+
+    # q_file = folderData+"q_KUKA_random.txt" #joint positions file
+    # dq_file = folderData+"dq_KUKA_random.txt" #joint velocities file
+    #
+    # Pos_file = folderData+"P_eul_sincos_KUKA_random.txt" #Tip position and tirgonometric representation for RPY
+    # dPos_file = folderData+"dP_deul_sincos_KUKA_random.txt" #Rate of change of tip position and tirgonometric representation for RPY
 
     #---- Training Setup
     Deriv = True #Include differential relationship in training
@@ -180,13 +187,13 @@ if __name__ == "__main__":
 
     sizes = [
         [100,50,50], #neurons in each hidden layer for tip position
-             [100,50], #neurons in each hidden layer for roll
-             [100,50], #neurons in each hidden layer for pitch
-              [100,50] #neurons in each hidden layer for yaw
+             [50,10], #neurons in each hidden layer for roll
+             [50,10], #neurons in each hidden layer for pitch
+              [50,10] #neurons in each hidden layer for yaw
              ]
 
     dropout = 0
-    Epochs = [2000, 2000] #epochs for traiing P and RPY
+    Epochs = [1, 5000] #epochs for traiing P and RPY
     batch_size = [X_train.shape[0]//5, #batch size for training P
                   X_train.shape[0] // 5] #batch size for training RPY
 

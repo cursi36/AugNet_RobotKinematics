@@ -2,9 +2,10 @@
 
 ### This repository presents *AugNet*, an augmented neural network model with differential relationships for full robot kinematics learning.
 
-### The manuscript is published in IEEE Robotics and Automation Letters  and presented at IROS 2022.
+## The manuscript is published in IEEE Robotics and Automation Letters  and presented at IROS 2022.
 
 cite:
+
 @ARTICLE{9792209,
   author={Cursi, Francesco and Bai, Weibang and Li, Weiyi and Yeatman, Eric M. and Kormushev, Petar},
   journal={IEEE Robotics and Automation Letters}, 
